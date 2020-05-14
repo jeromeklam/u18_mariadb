@@ -27,4 +27,4 @@ EXPOSE 3306
 
 # Use baseimage-docker's init system.
 RUN chmod +x /scripts/start.sh
-ENTRYPOINT ["/scripts/start.sh"]
+CMD ["/scripts/start.sh"]

@@ -30,10 +30,14 @@ wait_for_mysql_and_run_post_start_action() {
       echo -n "."
   done
   echo "!"
+  echo "post_start_action..."
   post_start_action
+  echo "post_start_action..."
 }
 
+echo "pre_start_action..."
 pre_start_action
+echo "pre_start_action ok"
 
 wait_for_mysql_and_run_post_start_action &
 
