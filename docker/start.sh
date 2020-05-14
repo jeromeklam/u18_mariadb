@@ -39,7 +39,7 @@ echo "pre_start_action..."
 pre_start_action
 echo "pre_start_action ok"
 
-wait_for_mysql_and_run_post_start_action &
+wait_for_mysql_and_run_post_start_action
 
 # Start MariaDB
 echo "Starting MariaDB..."
