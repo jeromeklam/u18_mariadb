@@ -11,6 +11,9 @@ RUN apt-get update
 RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
 RUN add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.3/ubuntu/ bionic main'
 
+# Supervisor
+COPY ./docker/supervisord.conf /etc/supervisor/conf.d/mysqld.conf
+
 # Expose our data, log, and configuration directories.
 VOLUME ["/data", "/var/log/mysql", "/etc/mysql"]
 
@@ -27,4 +30,7 @@ EXPOSE 3306
 
 # Use baseimage-docker's init system.
 RUN chmod +x /scripts/start.sh
-CMD ["/scripts/start.sh"]
+RUN /scripts/start.sh
+
+## On démarre mysql, ...
+CMD ["/usr/bin/supervisord", "-n"]
