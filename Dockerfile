@@ -1,4 +1,4 @@
-# Version 1.0.4
+# Version 1.0.6
 
 FROM jeromeklam/u18
 MAINTAINER Jérôme KLAM, "jeromeklam@free.fr"
@@ -25,8 +25,9 @@ RUN apt-get update && \
 ADD docker /scripts
 
 RUN mkdir -p /data
+RUN mkdir -p /dumps
 # Expose our data, log, and configuration directories.
-VOLUME ["/var/log/mysql", "/data", "/etc/mysql"]
+VOLUME ["/var/log/mysql", "/dumps", "/data", "/etc/mysql"]
 
 EXPOSE 3306
 

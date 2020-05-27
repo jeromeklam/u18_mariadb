@@ -48,13 +48,17 @@ EOF
     for i in "${!array[@]}"
     do
       crt=${array[i]}
-      echo "mounting $crt..."
-      filename=$(basename "$crt")
-      extension="${filename##*.}"
-      filename="${filename%.*}"
-      mysql -usuper -pYggDrasil -e "CREATE DATABASE \`$filename\`;"
-      mysql -usuper -pYggDrasil "$filename" < "$crt"
-      echo "done."
+      if [ -f $crt ]; then
+        echo "importing $crt..."
+        filename=$(basename "$crt")
+        extension="${filename##*.}"
+        filename="${filename%.*}"
+        mysql -usuper -pYggDrasil -e "CREATE DATABASE \`$filename\`;"
+        mysql -usuper -pYggDrasil "$filename" < "$crt"
+        echo "done."
+      else
+        echo "$crt not found !"
+      fi
     done
   else
     echo "nothing..."
