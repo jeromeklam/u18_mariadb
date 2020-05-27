@@ -5,7 +5,7 @@
 set -e
 
 if [ -d /data ]; then
-  if [[ -e /data/firstrun.ok ]]; then
+  if [ -f /data/firstrun.ok ]; then
     echo "normal run..."
     source /scripts/normal_run.sh
   else
@@ -13,7 +13,7 @@ if [ -d /data ]; then
     source /scripts/first_run.sh
   fi
 else
-  if [[ -e /var/lib/mysql/firstrun.ok ]]; then
+  if [ -f /var/lib/mysql/firstrun.ok ]; then
     echo "normal run..."
     source /scripts/normal_run.sh
   else
