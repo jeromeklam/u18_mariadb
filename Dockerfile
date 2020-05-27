@@ -32,7 +32,6 @@ EXPOSE 3306
 
 # Use baseimage-docker's init system.
 RUN chmod +x /scripts/start.sh
-RUN /scripts/start.sh
 
 ## On démarre mysql, ...
-CMD ["mysqld"]
+CMD ["/scripts/start.sh"]
