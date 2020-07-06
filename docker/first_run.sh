@@ -19,6 +19,9 @@ pre_start_action() {
     chown mysql.mysql /var/lib/mysql
     touch /data/firstrun.ok
   fi
+  if [ -f /data/my.cnf ]; then
+    cp -f /data/my.cnf /etc/mysql/my.cnf
+  fi
   /etc/init.d/mysql restart
 }
 

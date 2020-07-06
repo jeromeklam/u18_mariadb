@@ -27,7 +27,7 @@ ADD docker /scripts
 RUN mkdir -p /data
 RUN mkdir -p /dumps
 # Expose our data, log, and configuration directories.
-COPY ./docker/my.cnf /etc/mysql/my.cnf
+COPY ./docker/my.cnf /data/my.cnf
 VOLUME ["/var/log/mysql", "/dumps", "/data", "/etc/mysql"]
 
 EXPOSE 3306

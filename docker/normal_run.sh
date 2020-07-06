@@ -11,6 +11,9 @@ pre_start_action() {
       touch /data/firstrun.ok
       echo "moving done..."
     fi;
+    if [ -f /data/my.cnf ]; then
+      cp -f /data/my.cnf /etc/mysql/my.cnf
+    fi
   fi
   rm -f /run/mysqld/mysqld.sock
   /etc/init.d/mysql restart
