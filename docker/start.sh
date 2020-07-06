@@ -25,11 +25,12 @@ fi
 wait_for_mysql_and_run_post_start_action() {
   # Wait for mysql to finish starting up first.
   echo -n "."
-  while [ ! -e /run/mysqld/mysqld.sock ]; do
+  test=`/etc/init.d/mysql status | grep Uptime`
+  while [ "$test" = "" ]; do
       sleep 1
       echo -n "."
   done
-  echo "!"
+  echo "! done"
   echo "post_start_action..."
   post_start_action
   echo "post_start_action..."
