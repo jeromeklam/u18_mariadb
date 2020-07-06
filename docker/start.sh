@@ -40,8 +40,8 @@ echo "pre_start_action..."
 pre_start_action
 echo "pre_start_action ok"
 
+echo "Starting MariaDB..."
 wait_for_mysql_and_run_post_start_action
 
-# Start MariaDB
-echo "Starting MariaDB..."
-/usr/bin/supervisord -n
+# Infinite loop
+tail -f /dev/null
